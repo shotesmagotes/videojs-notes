@@ -2,11 +2,12 @@
  * @file mark-item.js
  */
 
-import * as Guid from 'video.js/utils/guid.js';
-import mergeOptions from 'video.js/utils/merge-options.js';
-import Log from 'video.js/utils/log.js';
-import { Component } from 'video.js';
-import {assign} from 'video.js/utils/obj.js';
+import videojs from 'video.js';
+import { assign, newGUID } from '../utils';
+
+const Log = videojs.log;
+const Component = videojs.getComponent("Component")
+const mergeOptions = videojs.mergeOptions;
 
 
 class MarkItem extends Component {
@@ -22,7 +23,7 @@ class MarkItem extends Component {
 			Log.warn('defaulting position of item');
 		}
 			
-		this.id_ = `Item_${Guid.newGUID().toString()}`;
+		this.id_ = `Item_${newGUID().toString()}`;
 		
 		this.on('click', this.handleClick);
 		this.on('mouseenter', this.handleHover);

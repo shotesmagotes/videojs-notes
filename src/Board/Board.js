@@ -7,9 +7,14 @@
  * @file board.js
  */
 
-import { Component, Log, mergeOptions, Dom } from 'video.js';
+import videojs from 'video.js';
 import State from '../State';
 import { MarkCollection } from '../Mark';
+
+const Component = videojs.getComponent('Component');
+const Log = videojs.log;
+const mergeOptions = videojs.mergeOptions;
+const Dom = videojs.Dom;
 
 /**
  * Overalys element over the player seek bar in order to prevent triggering of seek bar events

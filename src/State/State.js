@@ -2,11 +2,12 @@
  * @file state.js
  */
 
-import { Dom } from 'video.js';
-import { bind } from 'video.js';
-import toTitleCase from 'video.js/utils/to-title-case.js';
-import Log from 'video.js/utils/log.js';
+import videojs from 'video.js';
+import { toTitleCase } from '../utils';
 
+const Dom = videojs.dom;
+const Log = videojs.log;
+const bind = videojs.bind;
 
 class State {
 	constructor(context, options) {

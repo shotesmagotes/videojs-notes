@@ -2,8 +2,10 @@
  * @file create-icon.js
  */
 
-import mergeOptions from 'video.js/utils/merge-options.js';
+import videojs from 'video.js';
 import Icon from './Icon.js';
+
+const mergeOptions = videojs.mergeOptions;
 
 class CreateIcon extends Icon { 
 	constructor(options) {

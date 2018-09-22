@@ -1,6 +1,5 @@
 import videojs from 'video.js';
 import {version as VERSION} from '../package.json';
-import dom from 'video.js';
 import Board from './Board';
 
 const Plugin = videojs.getPlugin('plugin');

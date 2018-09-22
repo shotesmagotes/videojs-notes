@@ -6,11 +6,13 @@
  * @file mark-collection.js
  */
 
-import { Dom } from 'video.js';
-import mergeOptions from 'video.js/utils/merge-options.js';
-import Log from 'video.js/utils/log.js';
-import { Component } from 'video.js';
+import videojs from 'video.js';
 import MarkItem from './MarkItem.js';
+
+const mergeOptions = videojs.mergeOptions;
+const Log = videojs.log;
+const Dom = videojs.dom;
+const Component = videojs.getComponent('Component');
 
 /**
  * Controls the CRUD operations for the mark items
