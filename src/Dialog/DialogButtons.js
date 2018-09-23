@@ -1,7 +1,7 @@
 import videojs from 'video.js';
 import { assign } from '../utils.js';
-import './dialog-save.js';
-import './dialog-delete.js';
+import './DialogSave.js';
+import './DialogDelete.js';
 
 const Component = videojs.getComponent('Component');
 

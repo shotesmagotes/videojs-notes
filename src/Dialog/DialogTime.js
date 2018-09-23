@@ -1,7 +1,7 @@
 import videojs from 'video.js';
 import { assign } from '../utils.js';
-import DialogTimeStart from './dialog-time-start.js';
-import DialogTimeEnd from './dialog-time-end.js';
+import DialogTimeStart from './DialogTimeStart.js';
+import DialogTimeEnd from './DialogTimeEnd.js';
 
 const Component = videojs.getComponent('Component');
 

@@ -1,5 +1,5 @@
 import videojs from 'video.js';
-import { assign } from '../utils/obj.js';
+import { assign } from '../utils.js';
 
 const Component = videojs.getComponent('Component');
 

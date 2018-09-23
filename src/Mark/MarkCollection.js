@@ -124,7 +124,7 @@ class MarkCollection extends Component {
 	}
   
 	/**
-	 * Creates a dialog but dialog can exist once
+	 * Creates a singleton dialog 
 	 *
 	 * @param {String} markID The id of the mark
 	 * @method openMark
@@ -198,8 +198,10 @@ class MarkCollection extends Component {
 	 * @method dispose
 	 */
 	dispose() {
-		this.dialog_.dispose();
-		this.dialog_ = null;
+		if (this.dialog_) {
+			this.dialog_.dispose();
+			this.dialog_ = null;
+		}
 	}
 }
 

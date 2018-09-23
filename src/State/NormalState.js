@@ -36,7 +36,7 @@ class NormalState extends State {
 }
 
 NormalState.prototype.options_ = {
-	name: NormalState
+	name: 'NormalState'
 };
 
 State.registerState('NormalState', NormalState);

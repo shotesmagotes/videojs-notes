@@ -1,9 +1,9 @@
 import videojs from 'video.js';
 import { assign } from '../utils.js';
-import './dialog-title.js';
-import './dialog-text.js';
-import './dialog-time.js';
-import './dialog-buttons.js';
+import './DialogTitle.js';
+import './DialogText.js';
+import './DialogTime.js';
+import './DialogButtons.js';
 
 const Component = videojs.getComponent('Component');
 
