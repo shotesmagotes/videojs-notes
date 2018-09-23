@@ -1,11 +1,11 @@
-import mergeOptions from '../utils/merge-options.js';
-import {Component, Button} from '../utils/vjs-classes.js';
 
-import Config from '../../config.js';
+import videojs from 'video.js';
+
+const Button = videojs.getComponent('Button');
+const Component = videojs.getComponent('Component');
 
 class DialogSave extends Button {
 	constructor(player, options) {
-		options = mergeOptions(DialogSave.prototype.options_, options);
 		super(player, options);
 		
 		this.controlText(this.localize('Save'));
@@ -26,7 +26,9 @@ class DialogSave extends Button {
 	}
 }
 
-DialogSave.prototype.options_ = Config.DialogSave;
+DialogSave.prototype.options_ = {
+	name: 'DialogSave'
+};
 
 Component.registerComponent('DialogSave', DialogSave);
 export default DialogSave;

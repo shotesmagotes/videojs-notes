@@ -1,12 +1,8 @@
 /**
  * @file normal-state.js
  */
-import * as Dom from '../utils/dom.js';
-import mergeOptions from '../utils/merge-options.js';
+import State from './State.js';
 
-import Config from '../../config.js';
-
-import State from './state.js';
 /**
  * Serves as an adapte the marker button triggers to the marker modes
  * 
@@ -17,7 +13,6 @@ import State from './state.js';
  */
 class NormalState extends State {
 	constructor(context, options){
-		options = mergeOptions(NormalState.prototype.options_, options);
 		super(context, options);
 	}
 	
@@ -40,7 +35,9 @@ class NormalState extends State {
 	}
 }
 
-NormalState.prototype.options_ = Config.NormalState;
+NormalState.prototype.options_ = {
+	name: NormalState
+};
 
-State.registerState('Normal', NormalState);
+State.registerState('NormalState', NormalState);
 export default NormalState;

@@ -2,16 +2,11 @@
  * @file create-state.js
  */
 
-import * as Dom from '../utils/dom.js';
-import * as Fn from '../utils/fn.js';
-import mergeOptions from '../utils/merge-options.js';
-
 import * as Logic from '../../logic/occlusion.js'
+import State from './State.js';
+import '../Dialog.js';
 
-import Config from '../../config.js';
-import State from './state.js';
-import Dialog from '../mark-dialog/dialog.js';
-
+const bind = videojs.bind;
 /**
  * Handles events for creating marks
  * 
@@ -21,11 +16,10 @@ import Dialog from '../mark-dialog/dialog.js';
  */
 class CreateState extends State {
 	constructor(context, options) {
-		options = mergeOptions(CreateState.prototype.options_, options);
 		super(context, options);
 		
-		this.handleTechClick = Fn.bind(this, this.handleTechClick);
-		this.handleDialogFormSubmit = Fn.bind(this, this.handleDialogFormSubmit);
+		this.handleTechClick = bind(this, this.handleTechClick);
+		this.handleDialogFormSubmit = bind(this, this.handleDialogFormSubmit);
 		
 		this.anchor_ = 0;
 		this.mark_ = null;
@@ -45,9 +39,9 @@ class CreateState extends State {
 		const target = context.contentEl();
 		
 		// bind events to the ntk board el
-		context.on(target, 'click', Fn.bind(this, this.handleClick));
-		context.on(target, 'mousedown', Fn.bind(this, this.handleMouseDown));
-    context.on(target, 'touchstart', Fn.bind(this, this.handleMouseDown));
+		context.on(target, 'click', bind(this, this.handleClick));
+		context.on(target, 'mousedown', bind(this, this.handleMouseDown));
+    context.on(target, 'touchstart', bind(this, this.handleMouseDown));
 	}
 	
 	/**
@@ -70,9 +64,9 @@ class CreateState extends State {
 		this.anchor_ = null;
 		
 		// dispose attached events to board
-		context.off(target, 'click', Fn.bind(this, this.handleClick));
-		context.off(target, 'mousedown', Fn.bind(this, this.handleMouseDown));
-    context.off(target, 'touchstart', Fn.bind(this, this.handleMouseDown));
+		context.off(target, 'click', bind(this, this.handleClick));
+		context.off(target, 'mousedown', bind(this, this.handleMouseDown));
+    context.off(target, 'touchstart', bind(this, this.handleMouseDown));
 		
 		this.context_.removeClass('ntk-create-state');
 	}
@@ -207,7 +201,9 @@ class CreateState extends State {
 	}
 }
 
-CreateState.prototype.options_ = Config.CreateState;
+CreateState.prototype.options_ = {
+	name: 'CreateState'
+};
 
-State.registerState('Create', CreateState);
+State.registerState('CreateState', CreateState);
 export default CreateState;

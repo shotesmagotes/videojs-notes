@@ -1,12 +1,10 @@
-import mergeOptions from '../utils/merge-options.js';
-import {Component} from '../utils/vjs-classes.js';
-import {assign} from '../utils/obj.js';
+import { assign } from '../utils.js';
+import videojs from 'video.js';
 
-import Config from '../../config.js';
+const Component = videojs.getComponent('Component');
 
 class DialogTitle extends Component {
 	constructor(player, options) {
-		options = mergeOptions(DialogTitle.prototype.options_, options);
 		super(player, options);
 	}
 	
@@ -28,7 +26,9 @@ class DialogTitle extends Component {
 	}
 }
 
-DialogTitle.prototype.options_ = Config.DialogTitle;
+DialogTitle.prototype.options_ = {
+	name: 'DialogTitle'
+};
 
 Component.registerComponent('DialogTitle', DialogTitle);
 export default DialogTitle;

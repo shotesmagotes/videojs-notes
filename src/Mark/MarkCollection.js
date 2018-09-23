@@ -8,8 +8,8 @@
 
 import videojs from 'video.js';
 import MarkItem from './MarkItem.js';
+import Dialog from '../Dialog';
 
-const mergeOptions = videojs.mergeOptions;
 const Log = videojs.log;
 const Dom = videojs.dom;
 const Component = videojs.getComponent('Component');
@@ -23,7 +23,6 @@ const Component = videojs.getComponent('Component');
  */
 class MarkCollection extends Component {
   constructor(player, options) {
-		options = mergeOptions(MarkCollection.prototype.options_, options);
     super(player, options);
 		
 		this.dialog_ = null;
@@ -134,8 +133,8 @@ class MarkCollection extends Component {
 		const mark = this.getMark(markID);
 		
 		if (!this.dialog_) {
-			const dialog = new dialog(this, null)
-			this.dialog_ = this.player_.addChild('Dialog');
+			const dialog = new Dialog(this, {})
+			this.dialog_ = this.player_.addChild(dialog);
 		}
 		
 		if (this.dialog_.isActive()) {
@@ -211,7 +210,7 @@ class MarkCollection extends Component {
  */
 MarkCollection.prototype.marks = {};
 
-MarkCollection.prototype.options = {
+MarkCollection.prototype.options_ = {
 	name: 'MarkCollection'
 };
 

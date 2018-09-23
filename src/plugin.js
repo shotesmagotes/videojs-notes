@@ -36,10 +36,12 @@ class Notes extends Plugin {
     this.player.ready(() => {
       this.player.addClass('vjs-notes');
 
-      const progressControl = this.player.$('.vjs-progress-control')
+      const progressControl = this.player.
+                  getChild('controlBar').
+                  getChild('progressControl')
       
       const board = new Board(this, options)
-      progressControl.appendChild(board)
+      progressControl.addChild(board)
 
     });
   }

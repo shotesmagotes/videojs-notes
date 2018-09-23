@@ -1,30 +1,24 @@
 /**
  * @file dialog.js
  */
+import videojs from 'video.js';
+import { formatTime, formToJson, assign } from '../utils.js';
+import './DialogForm.js';
 
-import * as Dom from '../utils/dom.js';
-import mergeOptions from '../utils/merge-options.js';
-import * as Fn from '../utils/fn.js';
-import Log from '../utils/log.js';
-import * as Form from '../utils/form.js';
-import {Component} from '../utils/vjs-classes.js';
-import {assign} from '../utils/obj.js'
-import formatTime from '../utils/format-time.js';
-
-import Config from '../../config.js';
-
-import DialogForm from './DialogForm.js';
+const Dom = videojs.dom;
+const bind = videojs.bind;
+const Log = videojs.log;
+const Component = videojs.getComponent('Component');
 
 class Dialog extends Component {
 	constructor(player, options){
-		options = mergeOptions(Dialog.prototype.options_, options);
 		super(player, options);
 		
 		this.mark_ = null;
 		
 		this.form_ = this.getChild('DialogForm');
 		
-		let formHandler = Fn.bind(this, this.handleFormSubmit);
+		let formHandler = bind(this, this.handleFormSubmit);
 		this.form_.on('submit', formHandler);
 		
 		this.on('click', this.handleContainerClick);
@@ -286,13 +280,17 @@ class Dialog extends Component {
 		event.preventDefault();
 		event.stopImmediatePropagation();
 		
-		const data = Form.formToJson(this.getAllFormElements());
+		const data = formToJson(this.getAllFormElements());
 		console.log('submitted');
 	}
 }
 
-Dialog.prototype.options = {
-	name: 'Dialog'
+Dialog.prototype.options_ = {
+	name: 'Dialog',
+	className: 'ntk-marks',
+	children: [
+		'DialogForm'
+	]
 };
 
 Component.registerComponent('Dialog', Dialog);

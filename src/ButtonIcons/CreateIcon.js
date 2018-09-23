@@ -2,14 +2,10 @@
  * @file create-icon.js
  */
 
-import videojs from 'video.js';
 import Icon from './Icon.js';
-
-const mergeOptions = videojs.mergeOptions;
 
 class CreateIcon extends Icon { 
 	constructor(options) {
-		options = mergeOptions(CreateIcon.prototype.options, options);
 		super(options);
 	}
 	
@@ -33,8 +29,8 @@ class CreateIcon extends Icon {
 	}
 }
 
-CreateIcon.prototype.options = {
-	name: "CreateIcon"
+CreateIcon.prototype.options_ = {
+	name: 'CreateIcon'
 };
 
 Icon.registerIcon('CreateIcon', CreateIcon);

@@ -1,11 +1,9 @@
-import mergeOptions from '../utils/merge-options.js';
-import {Component} from '../utils/vjs-classes.js';
+import videojs from 'video.js';
 
-import Config from '../../config.js';
+const Component = videojs.getComponent('Component');
 
 class DialogTimeStart extends Component {
 	constructor(player, options) {
-		options = mergeOptions(DialogTimeStart.prototype.options_, options);
 		super(player, options);
 	}
 	
@@ -27,7 +25,9 @@ class DialogTimeStart extends Component {
 	}
 }
 
-DialogTimeStart.prototype.options_ = Config.DialogTimeStart;
+DialogTimeStart.prototype.options_ = {
+	name: 'DialogTimeStart'
+};
 
 Component.registerComponent('DialogTimeStart', DialogTimeStart);
 export default DialogTimeStart;

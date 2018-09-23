@@ -1,17 +1,14 @@
-import mergeOptions from '../utils/merge-options.js';
-import {Component} from '../utils/vjs-classes.js';
-import {assign} from '../utils/obj.js';
+import videojs from 'video.js';
+import { assign } from '../utils.js';
+import './dialog-title.js';
+import './dialog-text.js';
+import './dialog-time.js';
+import './dialog-buttons.js';
 
-import Config from '../../config.js';
-
-import DialogTitle from './dialog-title.js';
-import DialogText from './dialog-text.js';
-import DialogTime from './dialog-time.js';
-import DialogButtons from './dialog-buttons.js';
+const Component = videojs.getComponent('Component');
 
 class DialogForm extends Component {
 	constructor(player, options) {
-		options = mergeOptions(DialogForm.prototype.options_, options);
 		super(player, options);
 	}
 	
@@ -35,7 +32,15 @@ class DialogForm extends Component {
 	}
 }
 
-DialogForm.prototype.options_ = Config.DialogForm;
+DialogForm.prototype.options_ = {
+	name: 'DialogForm',
+	children: [
+		'DialogTime',
+		'DialogTitle',
+		'DialogText',
+		'DialogButtons'
+	]
+};
 
 Component.registerComponent('DialogForm', DialogForm);
 export default DialogForm;

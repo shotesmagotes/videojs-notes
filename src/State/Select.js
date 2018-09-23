@@ -1,10 +1,7 @@
 /**
  * @file select-state.js
  */
-import mergeOptions from '../utils/merge-options.js';
-
 import * as Logic from '../logic/occlusion.js'
-
 import State from './state.js';
 
 /**
@@ -16,7 +13,6 @@ import State from './state.js';
  */
 class SelectState extends State {
 	constructor(context, options) {
-		options = mergeOptions(SelectState.prototype.options, options);
 		super(context, options);
 	}
 	
@@ -112,9 +108,9 @@ class SelectState extends State {
 	}
 }
 
-SelectState.prototype.options = {
+SelectState.prototype.options_ = {
 	name: 'SelectState'
 };
 
-State.registerState('Select', SelectState);
+State.registerState('SelectState', SelectState);
 export default SelectState;

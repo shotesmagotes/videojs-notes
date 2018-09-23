@@ -152,7 +152,7 @@ class Board extends MarkCollection {
 	}
 }
 
-Board.prototype.options = {
+Board.prototype.options_ = {
 	name: 'Board',
 	reportTouchActivity: false
 }

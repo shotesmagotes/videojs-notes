@@ -2,12 +2,10 @@
  * @file select-icon.js
  */
 
-import mergeOptions from '../utils/merge-options.js';
 import Icon from './Icon.js';
 
 class NormalIcon extends Icon { 
 	constructor(options) {
-	 	options = mergeOptions(NormalIcon.prototype.options, options);
 		super(options);
 	}
 	
@@ -31,7 +29,7 @@ class NormalIcon extends Icon {
 	}
 }
 
-NormalIcon.prototype.options = {
+NormalIcon.prototype.options_ = {
 	name: 'NormalIcon'
 };
 

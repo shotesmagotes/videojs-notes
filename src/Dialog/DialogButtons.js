@@ -1,16 +1,12 @@
-import mergeOptions from '../utils/merge-options.js';
-import {Component} from '../utils/vjs-classes.js';
-import {assign} from '../utils/obj.js';
-import * as Dom from '../utils/dom.js';
+import videojs from 'video.js';
+import { assign } from '../utils.js';
+import './dialog-save.js';
+import './dialog-delete.js';
 
-import Config from '../../config.js';
-
-import DialogSave from './dialog-save.js';
-import DialogDelete from './dialog-delete.js';
+const Component = videojs.getComponent('Component');
 
 class DialogButtons extends Component {
 	constructor(player, options) {
-		options = mergeOptions(DialogButtons.prototype.options_, options);
 		super(player, options);
 	}
 	
@@ -26,7 +22,13 @@ class DialogButtons extends Component {
 	}
 }
 
-DialogButtons.prototype.options_ = Config.DialogButtons;
+DialogButtons.prototype.options_ = {
+	name: 'DialogButtons',
+	children: [
+		'DialogSave',
+		'DialogDelete'
+	]
+};
 
 Component.registerComponent('DialogButtons', DialogButtons);
 export default DialogButtons;

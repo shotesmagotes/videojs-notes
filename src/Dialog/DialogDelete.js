@@ -1,11 +1,10 @@
-import mergeOptions from '../utils/merge-options.js';
-import {Component, Button} from '../utils/vjs-classes.js';
+import videojs from 'video.js';
 
-import Config from '../../config.js';
+const Button = videojs.getComponent('Button');
+const Component = videojs.getComponent('Component');
 
 class DialogDelete extends Button {
 	constructor(player, options) {
-		options = mergeOptions(DialogDelete.prototype.options_, options);
 		super(player, options);
 		
 		this.controlText(this.localize('Delete'));
@@ -16,7 +15,9 @@ class DialogDelete extends Button {
 	}
 }
 
-DialogDelete.prototype.options_ = Config.DialogDelete;
+DialogDelete.prototype.options_ = {
+	name: 'DialogDelete'
+};
 
 Component.registerComponent('DialogDelete', DialogDelete);
 export default DialogDelete;

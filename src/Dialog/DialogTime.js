@@ -1,16 +1,12 @@
-import * as Dom from '../utils/dom.js';
-import mergeOptions from '../utils/merge-options.js';
-import {Component} from '../utils/vjs-classes.js';
-import {assign} from '../utils/obj.js';
-
-import Config from '../../config.js';
-
+import videojs from 'video.js';
+import { assign } from '../utils.js';
 import DialogTimeStart from './dialog-time-start.js';
 import DialogTimeEnd from './dialog-time-end.js';
 
+const Component = videojs.getComponent('Component');
+
 class DialogTime extends Component {
 	constructor(player, options) {
-		options = mergeOptions(DialogTime.prototype.options_, options);
 		super(player, options);
 	}
 	
@@ -24,7 +20,7 @@ class DialogTime extends Component {
 		const start = new DialogTimeStart(this.player_);
 		const end = new DialogTimeEnd(this.player_);
 		
-		const textEl = Dom.createEl('span', {
+		const textEl = super.createEl('span', {
 			className: 'ntk-dialog-time-text'
 		});
 		
@@ -38,7 +34,9 @@ class DialogTime extends Component {
 	}
 }
 
-DialogTime.prototype.options_ = Config.DialogTime;
+DialogTime.prototype.options_ = {
+	name: 'DialogTime'
+};
 
 Component.registerComponent('DialogTime', DialogTime);
 export default DialogTime;

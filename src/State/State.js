@@ -8,10 +8,14 @@ import { toTitleCase } from '../utils';
 const Dom = videojs.dom;
 const Log = videojs.log;
 const bind = videojs.bind;
+const mergeOptions = videojs.mergeOptions;
 
 class State {
 	constructor(context, options) {
-		this.options_ = options;
+		
+		this.options_ = mergeOptions({}, this.options_);
+		options = this.options_ = mergeOptions(this.options_, options);
+		
 		this.context_ = context;
 		this.style_ = context.el().style;
 		

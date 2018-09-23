@@ -2,15 +2,16 @@
  * @file marker.js
  */
 
-import * as Dom from 'video.js/utils/dom.js';
-import Log from 'video.js/utils/log.js';
-import mergeOptions from 'video.js/utils/merge-options.js';
-import Component from 'video.js/component.js';
+import videojs from 'video.js';
 import Icon from './ButtonIcons';
+
+const Dom = videojs.dom;
+const Log = videojs.log;
+const Component = videojs.getComponent('Component');
+const Button = videojs.getComponent('Button');
 
 class MarkerButton extends Button {
   constructor(player, options) {
-		options = mergeOptions(MarkerButton.prototype.options_, options);
     super(player, options);
     
 		// store instances of icons
@@ -234,7 +235,14 @@ class MarkerButton extends Button {
   }
 }
 
-MarkerButton.prototype.options_ = Config.MarkerButton;
+MarkerButton.prototype.options_ = {
+	name: 'MarkerButton',
+	order: [
+		'Normal',
+		'Create',
+		'Select'
+	]
+};
 MarkerButton.prototype.controlText_ = 'markerButton';
 
 Component.registerComponent('MarkerButton', MarkerButton);

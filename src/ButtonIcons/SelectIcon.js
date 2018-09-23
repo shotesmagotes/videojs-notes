@@ -1,12 +1,10 @@
 /**
  * @file select-icon.js
  */
-import mergeOptions from 'video.js/utils/merge-options.js';
 import Icon from './Icon.js';
 
 class SelectIcon extends Icon { 
 	constructor(options) {
-		options = mergeOptions(SelectIcon.prototype.options_, options);
 		super(options);
 	}
 	
@@ -30,7 +28,7 @@ class SelectIcon extends Icon {
 	}
 }
 
-SelectIcon.prototype.options = {
+SelectIcon.prototype.options_ = {
 	name: 'SelectIcon'
 };
 

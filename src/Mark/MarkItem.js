@@ -7,12 +7,10 @@ import { assign, newGUID } from '../utils';
 
 const Log = videojs.log;
 const Component = videojs.getComponent("Component")
-const mergeOptions = videojs.mergeOptions;
 
 
 class MarkItem extends Component {
 	constructor(player, options){
-		options = mergeOptions(MarkItem.prototype.options_, options);
 		super(player, options);
 				
 		this.position_ = {};
@@ -114,7 +112,7 @@ MarkItem.prototype.handleHover = function(event) {
 	this.toggleClass('ntk-mark-focused');
 }
 
-MarkItem.prototype.options = {
+MarkItem.prototype.options_ = {
 	name: 'MarkItem'
 };
 

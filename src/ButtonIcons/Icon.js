@@ -1,11 +1,14 @@
+import videojs from 'video.js';
+import { toTitleCase } from '../utils.js';
 
-import * as Dom from 'video.js/utils/dom.js';
-import Log from 'video.js/utils/log.js';
-import toTitleCase from 'video.js/utils/to-title-case.js';
+const mergeOptions = videojs.mergeOptions;
+const Dom = videojs.dom;
+const Log = videojs.log;
 
 class Icon {
 	constructor(options) {	
-		this.options_ = options;
+		this.options_ = mergeOptions({}, this.options_);
+		options = this.options_ = mergeOptions(this.options_, options);
 		
 		if (options.el) {
       this.el_ = options.el;
