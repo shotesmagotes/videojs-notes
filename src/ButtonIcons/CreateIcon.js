@@ -3,6 +3,10 @@
  */
 
 import Icon from './Icon.js';
+import {icon, library} from '@fortawesome/fontawesome-svg-core';
+import {faEdit} from '@fortawesome/free-regular-svg-icons';
+
+library.add(faEdit)
 
 class CreateIcon extends Icon { 
 	constructor(options) {
@@ -19,18 +23,20 @@ class CreateIcon extends Icon {
 	 * @method createEl
    */
 	createEl(tag = 'i', props = {}, attrs = {}){
-		return super.createEl(
-			tag,
-			{
-				className: 'ntk-marker-mode-icon fa fa-pencil',
-			},
-			attrs
-		)
+		const edit = icon(icon({
+			prefix: 'far', 
+			iconName: 'edit'
+		}), {
+			classes: 'fa-lg'
+		});
+		
+		return edit.node[0]
 	}
 }
 
 CreateIcon.prototype.options_ = {
-	name: 'CreateIcon'
+	name: 'CreateIcon',
+	state: 'CreateState'
 };
 
 Icon.registerIcon('CreateIcon', CreateIcon);

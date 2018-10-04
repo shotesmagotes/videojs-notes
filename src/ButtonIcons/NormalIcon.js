@@ -3,6 +3,10 @@
  */
 
 import Icon from './Icon.js';
+import {icon, library} from '@fortawesome/fontawesome-svg-core';
+import {faStickyNote} from '@fortawesome/free-regular-svg-icons';
+
+library.add(faStickyNote)
 
 class NormalIcon extends Icon { 
 	constructor(options) {
@@ -19,18 +23,19 @@ class NormalIcon extends Icon {
 	 * @method createEl
    */
 	createEl(tag = 'i', props = {}, attrs = {}){
-		return super.createEl(
-			tag,
-			{
-				className: 'ntk-marker-mode-icon fa fa-sticky-note-o',
-			},
-			attrs
-		)
+		const stickynote = icon(icon({
+			prefix: 'far', 
+			iconName: 'sticky-note'
+		}), {
+			classes: ['fa-lg']
+		});
+		return stickynote.node[0]
 	}
 }
 
 NormalIcon.prototype.options_ = {
-	name: 'NormalIcon'
+	name: 'NormalIcon',
+	state: 'NormalState'
 };
 
 Icon.registerIcon('NormalIcon', NormalIcon);

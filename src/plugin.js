@@ -1,6 +1,11 @@
 import videojs from 'video.js';
 import {version as VERSION} from '../package.json';
 import Board from './Board';
+import MarkerButton from './MarkerButton';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {faEdit, faStickyNote, faHandPointer} from '@fortawesome/free-regular-svg-icons';
+
+library.add(faEdit, faStickyNote, faHandPointer)
 
 const Plugin = videojs.getPlugin('plugin');
 
@@ -43,6 +48,11 @@ class Notes extends Plugin {
       const board = new Board(this, options)
       progressControl.addChild(board)
 
+      const playerControl = this.player.
+                  getChild('controlBar')
+
+      const markerButton = new MarkerButton(this.player, options);
+      playerControl.addChild(markerButton);
     });
   }
 }

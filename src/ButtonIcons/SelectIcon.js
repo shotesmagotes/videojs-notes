@@ -2,6 +2,10 @@
  * @file select-icon.js
  */
 import Icon from './Icon.js';
+import {icon, library} from '@fortawesome/fontawesome-svg-core';
+import {faHandPointer} from '@fortawesome/free-regular-svg-icons';
+
+library.add(faHandPointer)
 
 class SelectIcon extends Icon { 
 	constructor(options) {
@@ -18,18 +22,19 @@ class SelectIcon extends Icon {
 	 * @method createEl
    */
 	createEl(tag = 'i', props = {}, attrs = {}){
-		return super.createEl(
-			tag,
-			{
-				className: 'ntk-marker-mode-icon fa fa-hand-pointer-o',
-			},
-			attrs
-		)
+		const handpointer = icon(icon({
+			prefix: 'far', 
+			iconName: 'hand-pointer'
+		}), {
+			classes: ['fa-lg']
+		});
+		return handpointer.node[0];
 	}
 }
 
 SelectIcon.prototype.options_ = {
-	name: 'SelectIcon'
+	name: 'SelectIcon',
+	state: 'SelectState'
 };
 
 Icon.registerIcon('SelectIcon', SelectIcon);

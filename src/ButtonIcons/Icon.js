@@ -98,7 +98,7 @@ class Icon {
 	 * Returns a specific state class
 	 *
 	 * @return {Object}
-	 * @method getStates
+	 * @method getIcon
 	 */
 	static getIcon(name) {
 		if (!name && !Icon.icons_) {
@@ -118,7 +118,7 @@ class Icon {
 	 * Returns the states_ object
 	 *
 	 * @return {Object}
-	 * @method getStates
+	 * @method getIcons
 	 */
 	static getIcons() {
 		return Icon.icons_;	

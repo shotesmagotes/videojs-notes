@@ -14,7 +14,7 @@ import { MarkCollection } from '../Mark';
 const Component = videojs.getComponent('Component');
 const Log = videojs.log;
 const mergeOptions = videojs.mergeOptions;
-const Dom = videojs.Dom;
+const Dom = videojs.dom;
 
 /**
  * Overalys element over the player seek bar in order to prevent triggering of seek bar events
@@ -45,7 +45,7 @@ class Board extends MarkCollection {
 		
 		// adds states from the State array and initializes order
 		let initialOrder = [];
-		for (let state in State.getStates()) {			
+		for (let state in State.getStates()) {
 			this.addState(state, State.getState(state));
 			initialOrder.push(state);
 		}

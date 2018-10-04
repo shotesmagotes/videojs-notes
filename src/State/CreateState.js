@@ -2,9 +2,9 @@
  * @file create-state.js
  */
 
-import * as Logic from '../../logic/occlusion.js'
+import * as Logic from '../logic/occlusion.js';
 import State from './State.js';
-import '../Dialog.js';
+import '../Dialog';
 
 const bind = videojs.bind;
 /**

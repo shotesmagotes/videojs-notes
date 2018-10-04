@@ -2,7 +2,7 @@
  * @file select-state.js
  */
 import * as Logic from '../logic/occlusion.js'
-import State from './state.js';
+import State from './State.js';
 
 /**
  * Handles events for selecting marks

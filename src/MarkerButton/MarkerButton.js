@@ -3,7 +3,7 @@
  */
 
 import videojs from 'video.js';
-import Icon from './ButtonIcons';
+import Icon from '../ButtonIcons';
 
 const Dom = videojs.dom;
 const Log = videojs.log;
@@ -22,7 +22,10 @@ class MarkerButton extends Button {
 		this.nextIcon = {};
 		
 		// the element that changes state
-		this.target = this.getElement('Board');
+		this.target = this.player().
+									getChild('controlBar').
+									getChild('progressControl').
+									getChild('board')
 		
 		let initialOrder = [];
 		
@@ -31,13 +34,13 @@ class MarkerButton extends Button {
 			initialOrder.push(icon);
 		}
 		
-		if (!options.order) {
+		if (!this.options().order) {
 			this.setIconOrder(initialOrder);
 			let firstIcon = Object.keys(this.icons)[0];
 			this.setDefaultIcon(firstIcon);
 		} else {
-			this.setIconOrder(options.order);
-			this.setDefaultIcon(options.order[0]);
+			this.setIconOrder(this.options().order);
+			this.setDefaultIcon(this.options().order[0]);
 		}
 		
 		this.controlText(this.currentIcon.name().replace(/([A-Z])/g, ' $1'));
@@ -135,7 +138,7 @@ class MarkerButton extends Button {
 			let next = order[(i+1) % orderLen];
 			
 			if (!this.icons[icon]){
-				Log.error("The following state is not registered with the States class: ", icon);
+				Log.error("The following icon is not registered with the Icon class: ", icon);
 			}
 			
 			this.nextIcon[icon] = next;
@@ -238,9 +241,9 @@ class MarkerButton extends Button {
 MarkerButton.prototype.options_ = {
 	name: 'MarkerButton',
 	order: [
-		'Normal',
-		'Create',
-		'Select'
+		'NormalIcon',
+		'CreateIcon',
+		'SelectIcon'
 	]
 };
 MarkerButton.prototype.controlText_ = 'markerButton';
